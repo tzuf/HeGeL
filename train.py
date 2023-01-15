@@ -16,15 +16,15 @@ import eval
 
 N_EPOCH = 30
 S2_LEVEL = 13
-DATA_DIR = ''
+DATA_DIR = 'data/human'
 
 REGION_TRAIN = 'Tel_Aviv'
 REGION_DEV = 'Haifa'
 REGION_TEST = 'Jerusalem'
 
-GRAPH_EMBEDDING_TRAIN = ''
-GRAPH_EMBEDDING_DEV = ''
-GRAPH_EMBEDDING_TEST = ''
+GRAPH_EMBEDDING_TRAIN = f'data/cell_embedding/embedding_tel_aviv_{S2_LEVEL}.npy'
+GRAPH_EMBEDDING_DEV = f'data/cell_embedding/embedding_haifa_{S2_LEVEL}.npy'
+GRAPH_EMBEDDING_TEST = f'data/cell_embedding/embedding_jerusalem_{S2_LEVEL}.npy'
 
 TRAIN_BATCH_SIZE = 32
 TEST_BATCH_SIZE = 32
