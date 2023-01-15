@@ -16,15 +16,15 @@ import eval
 
 N_EPOCH = 30
 S2_LEVEL = 13
-DATA_DIR = '/home/onlp_gcp_biu/cabby_dual_encoder/cabby/model/text/dataSamples/human'
+DATA_DIR = ''
 
 REGION_TRAIN = 'Tel_Aviv'
 REGION_DEV = 'Haifa'
 REGION_TEST = 'Jerusalem'
 
-GRAPH_EMBEDDING_TRAIN = '/home/onlp_gcp_biu/cabby_dual_encoder/tmp/data/embedding_tel_aviv.npy'
-GRAPH_EMBEDDING_DEV = '/home/onlp_gcp_biu/cabby_dual_encoder/tmp/data/embedding_haifa.npy'
-GRAPH_EMBEDDING_TEST = '/home/onlp_gcp_biu/cabby_dual_encoder/tmp/data/embedding_jerusalem.npy'
+GRAPH_EMBEDDING_TRAIN = ''
+GRAPH_EMBEDDING_DEV = ''
+GRAPH_EMBEDDING_TEST = ''
 
 TRAIN_BATCH_SIZE = 32
 TEST_BATCH_SIZE = 32
