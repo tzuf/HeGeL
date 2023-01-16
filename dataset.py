@@ -50,7 +50,8 @@ class HeGeLSplit(torch.utils.data.Dataset):
     self.label_to_cellid = {idx: cellid for idx, cellid in enumerate(self.unique_cellid)}
     self.cellid_to_label = {cellid: idx for idx, cellid in enumerate(self.unique_cellid)}
 
-    self.data.cellid = self.data.end_point.apply(lambda x: util.cellid_from_point(x, s2level))
+    cellids = self.data.end_point.apply(lambda x: util.cellid_from_point(x, s2level))
+    self.data = self.data.assign(cellid=cellids)
 
     self.geometry = self.data.geometry.tolist()
     

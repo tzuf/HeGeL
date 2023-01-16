@@ -52,7 +52,7 @@ def get_error_distances(true_polygon_list, pred_points_list):
 
     error_distances.append(err)
     total_examples += 1
-  return error_distances
+  return error_distances, round(sum(error_distances)/len(error_distances),2)
 
 
 
@@ -65,26 +65,20 @@ def compute_metrics(error_distances):
       eval_logger: Logger object.
   """
   num_examples = len(error_distances)
+  accuracy_300m = round(100*float(
+    len(np.where(np.array(error_distances) <= 300.)[0])) / num_examples, 2)
 
-  accuracy_300m = float(
-    len(np.where(np.array(error_distances) <= 300.)[0])) / num_examples
-
-  accuracy_1000m = float(
-    len(np.where(np.array(error_distances) <= 1000.)[0])) / num_examples
+  accuracy_1000m = round(100*float(
+    len(np.where(np.array(error_distances) <= 1000.)[0])) / num_examples, 2)
 
   mean_distance, median_distance, max_error = np.mean(error_distances), np.median(
     error_distances), np.max(error_distances)
-  log_distance = np.sort(
-    np.log(error_distances + np.ones_like(error_distances) * _EPSILON))
-  # AUC for the distance errors curve. Smaller the better.
-  auc = np.trapz(log_distance)
-
-  # Normalized AUC by maximum error possible.
-  norm_auc = auc / (_MAX_LOG_HAVERSINE_DIST * (num_examples - 1))
 
   print(
-    f"Metrics: \nExact 300 m accuracy : {accuracy_300m}" +
-    f"\n1000 m accuracy : {accuracy_1000m}" + f"\nmean error {mean_distance}, " +
-    f"\nmedian error {median_distance}\nmax error {max_error}\n" +
-    "AUC of error curve {norm_auc}")
+    f"Metrics: \nExact 300 m accuracy : {accuracy_300m}%" +
+    f"\n1000 m accuracy : {accuracy_1000m}%" + f"\nmean error {mean_distance}, " +
+    f"\nmedian error {median_distance}\nmax error {max_error}\n"
+    )
+
+  
     
