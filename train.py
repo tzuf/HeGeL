@@ -89,10 +89,6 @@ def train():
 
   model.train()
 
-  n_cells_train = len(train_loader.dataset.cellid_to_label)
-  n_cells_test = len(test_loader.dataset.cellid_to_label)
-  n_cells_dev = len(dev_loader.dataset.cellid_to_label)
-
   best_error_distances = np.inf
   early_stop_counter = 0
   for epoch_idx in range(0, N_EPOCH):

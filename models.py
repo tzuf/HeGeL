@@ -21,15 +21,15 @@ class DualEncoder(nn.Module):
     )
 
   def forward(self, text, target, all_cells_tensor_test):
-    cell_embed = self.cellid_main(all_cells_tensor_test)
-
-    encoded = self.bert_model(**text).last_hidden_state[:, 0, :] 
+   
+    cell = self.cellid_main(all_cells_tensor_test)
+    encoded_text = self.bert_model(**text).last_hidden_state[:, 0, :] 
     dim_batch = target.shape[0]
-    dim_cell = cell_embed.shape[0]
-    encoded_exp = encoded.unsqueeze(1).expand(dim_batch, dim_cell, output_dim)
-    sample_cell_exp = cell_embed.unsqueeze(0).expand(dim_batch, dim_cell, output_dim)
+    dim_cell = cell.shape[0]
+    encoded_text_exp = encoded_text.unsqueeze(1).expand(dim_batch, dim_cell, output_dim)
+    sample_cell_exp = cell.unsqueeze(0).expand(dim_batch, dim_cell, output_dim)
 
-    score = torch.nn.functional.cosine_similarity(encoded_exp, sample_cell_exp, dim =-1)
+    score = torch.nn.functional.cosine_similarity(encoded_text_exp, sample_cell_exp, dim =-1)
 
     loss = criterion(score, target)
 
