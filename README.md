@@ -4,7 +4,7 @@
 
 The data can be found here - https://github.com/tzuf/HeGeL/tree/main/data/human.
 
-The data contains three json files corresponding to three sets: train (Tel Aviv), dev (Haifa), and test (Jerusalem).
+The data contains three json files corresponding to three split-sets: train (Tel Aviv), dev (Haifa), and test (Jerusalem).
 
 Each sample contains the following:
 
