@@ -1,5 +1,7 @@
 # HeGeL: A Novel Dataset for Hebrew Geo-Location
 
+This repository contains data and code for the HeGeL paper which was published in ACL2023 Findings - https://aclanthology.org/2023.findings-acl.460/
+
 ## Data
 
 The data can be found here - https://github.com/tzuf/HeGeL/tree/main/data/human.
